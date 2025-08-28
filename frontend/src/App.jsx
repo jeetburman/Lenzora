@@ -1,11 +1,10 @@
 function App() {
   return (
-    <div className="text-center p-10">
-      <h1 className="text-4xl font-bold text-blue-500">
-        Tailwind is working! 🎉
-      </h1>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-bold text-3xl">
+      Tailwind is working! 🚀
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
+
