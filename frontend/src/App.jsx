@@ -1,10 +1,22 @@
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import NotFound from './components/NotFound'
+
 function App() {
+  const [count, setCount] = useState(0)
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-bold text-3xl">
-      Tailwind is working! 🚀
-    </div>
-  );
+    <Router>
+      <Routes>
+        {/* Your existing routes */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
+  )
 }
 
-export default App;
+export default App
 
