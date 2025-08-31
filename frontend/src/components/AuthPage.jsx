@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import axios from 'axios';
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -16,24 +17,42 @@ const AuthPage = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
     if (isLogin) {
-      // Handle login logic
-      console.log('Login data:', { email: formData.email, password: formData.password });
+      // Login API call
+      const res = await axios.post("http://localhost:3001/api/auth/login", {
+        email: formData.email,
+        password: formData.password,
+      });
+      console.log("Login success:", res.data);
+
+      localStorage.setItem("token", res.data.token);
+
+      alert("Login successful!");
     } else {
-      // Handle register logic
       if (formData.password !== formData.confirmPassword) {
         alert("Passwords don't match!");
         return;
       }
-      console.log('Register data:', { 
-        name: formData.name, 
-        email: formData.email, 
-        password: formData.password 
+      // Signup API call
+      const res = await axios.post("http://localhost:3001/api/auth/signup", {
+        username : formData.name,
+        email: formData.email,
+        password: formData.password,
       });
+      console.log("Signup success:", res.data);
+
+      alert("Signup successful! You can now log in.");
+      setIsLogin(true);
     }
-  };
+  } catch (err) {
+    console.error("Auth error:", err.response?.data || err.message);
+    alert(err.response?.data?.message || "Something went wrong!");
+  }
+};
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-purple-900 p-4">
