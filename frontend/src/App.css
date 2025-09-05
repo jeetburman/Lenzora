@@ -1,0 +1,33 @@
+.range-thumb::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #8b5cf6;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.range-thumb::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #8b5cf6;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.transition-filter {
+  transition: filter 0.3s ease;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #1a1c2d 0%, #131522 100%);
+}
+
+.editor-shadow {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
